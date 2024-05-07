@@ -1,0 +1,15 @@
+{
+  "name": "mhrise-genetic-builder",
+  "version": "1.0.0",
+  "description": "An electron application to find the best current armor for your current HR",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^30.0.2"
+  }
+}
