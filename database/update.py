@@ -1,7 +1,7 @@
 
 from contextlib import closing
 from enum import Enum
-import sqlite3
+from sqlite3 import connect
 from h11 import Data
 from selenium import webdriver
 
@@ -91,12 +91,8 @@ skill_url = {DataNames.SKILLS: "https://mhrise.kiranico.com/data/skills",
 decoration_url = "https://mhrise.kiranico.com/data/decorations"
 
 
-def get_connection(db_path):
-    return sqlite3.connect(db_path)
-
-
 def execute_sql(sql, values=None, db_path=db_path):
-    with closing(get_connection(db_path)) as con:
+    with closing(connect(db_path)) as con:
         with closing(con.cursor()) as cur:
             if values:
                 cur.execute(sql, values)
@@ -109,15 +105,16 @@ def execute_sql(sql, values=None, db_path=db_path):
                 con.commit()
 
 
-def _chrome_driver():
+def chrome_driver(headless):
     chrome_options = webdriver.ChromeOptions()
-    chrome_options.add_argument('--headless=new')
+    if headless:
+        chrome_options.add_argument('--headless=new')
     driver = webdriver.Chrome(options=chrome_options)
     return driver
 
 
 def load_webpage(url):
-    driver = _chrome_driver()
+    driver = chrome_driver(headless=False)
     driver.get(url)
     return driver
 
