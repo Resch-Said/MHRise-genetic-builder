@@ -12,6 +12,12 @@
       },
       "args" : ["."],
       "outputCapture": "std"
-    }
+    },
+    {
+      "name": "Launch Current Opened File",
+      "type": "node",
+      "request": "launch",
+      "program": "${file}"
+  }
   ]
 }
