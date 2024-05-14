@@ -4,17 +4,17 @@ const sequelize = new Sequelize({
     storage: 'database/mhrise.db'
 });
 
-class SkillDetail extends Model { }
+class Monster extends Model { }
 
-SkillDetail.init({
-    description: {
+Monster.init({
+    name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
     }
 }, {
     sequelize,
-    modelName: 'SkillDetail'
+    modelName: 'Monster'
 });
 
-
-module.exports = SkillDetail;
+module.exports = Monster;

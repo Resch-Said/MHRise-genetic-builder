@@ -4,18 +4,22 @@ const sequelize = new Sequelize({
     storage: 'database/mhrise.db'
 });
 
-class Skill extends Model { }
+class Weapon extends Model { }
 
-Skill.init({
+Weapon.init({
     name: {
         type: DataTypes.STRING,
         allowNull: false,
         primaryKey: true
     },
-    description: DataTypes.TEXT
+    attack: DataTypes.INTEGER,
+    defense: DataTypes.INTEGER,
+    elementAttack: DataTypes.INTEGER,
+    sharpness: DataTypes.BLOB,
+    affinity: DataTypes.INTEGER,
 }, {
     sequelize,
-    modelName: 'Skill'
+    modelName: 'Weapon'
 });
 
-module.exports = Skill;
+module.exports = Weapon;
